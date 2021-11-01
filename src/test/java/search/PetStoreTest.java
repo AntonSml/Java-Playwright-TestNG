@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 public class PetStoreTest extends BaseTests {
 
     @Test(priority = 1)
-    public void addNewPetTest() {
-        mainPage.addTestData();
-        mainPage.checkId();
+    public void addNewPetTest() throws InterruptedException {
+        mainPage.addTestData()
+                .checkId();
     }
 
     @Test(priority = 2)

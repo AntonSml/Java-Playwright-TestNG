@@ -41,17 +41,17 @@ public class Configure {
                 return Playwright
                         .create()
                         .chromium()
-                        .launch(new BrowserType.LaunchOptions().withHeadless(false));
+                        .launch(new BrowserType.LaunchOptions().setHeadless(false));
             case FIREFOX:
                 return Playwright
                         .create()
                         .firefox()
-                        .launch(new BrowserType.LaunchOptions().withHeadless(false));
+                        .launch(new BrowserType.LaunchOptions().setHeadless(false));
             case WEBKIT:
                 return Playwright
                         .create()
                         .webkit()
-                        .launch(new BrowserType.LaunchOptions().withHeadless(false));
+                        .launch(new BrowserType.LaunchOptions().setHeadless(false));
             default:
                 throw new IllegalArgumentException("Configure(): invalid browser value");
         }

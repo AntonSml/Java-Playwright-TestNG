@@ -17,7 +17,7 @@ import pojo.Tag;
 import java.util.Arrays;
 import java.util.Properties;
 
-import static com.microsoft.playwright.Page.WaitForSelectorOptions.State.ATTACHED;
+import static com.microsoft.playwright.options.WaitForSelectorState.ATTACHED;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.get;
 import static org.testng.Assert.assertEquals;
@@ -72,26 +72,27 @@ public class MainPage {
 
     @Step("Check that 'Add new pet to the store' element is displayed")
     public MainPage checkAddNewPetElement() {
-        var expectedState = new Page.WaitForSelectorOptions().withState(ATTACHED);
+        var expectedState = new Page.WaitForSelectorOptions().setState(ATTACHED);
         page.waitForSelector(ADD_NEW_PET_FIELD, expectedState);
         return this;
     }
 
     @Step("Check that 'Try it out' button is displayed")
     public MainPage checkTryItOutButton() {
-        var expectedState = new Page.WaitForSelectorOptions().withState(ATTACHED);
+        var expectedState = new Page.WaitForSelectorOptions().setState(ATTACHED);
         page.waitForSelector(TRY_IT_OUT_BUTTON, expectedState);
         return this;
     }
 
     @Step("Check that test parameters area is displayed")
     public MainPage checkTestParametersArea() {
-        var expectedState = new Page.WaitForSelectorOptions().withState(ATTACHED);
+        var expectedState = new Page.WaitForSelectorOptions().setState(ATTACHED);
         page.waitForSelector(TEST_PARAMETERS, expectedState);
         return this;
     }
 
-    public MainPage checkId() {
+    public MainPage checkId() throws InterruptedException {
+        Thread.sleep(2000);
         checkNewIDExist();
         return this;
     }
